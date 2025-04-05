@@ -628,6 +628,11 @@
         const flotante = document.getElementById("imagen-flotante");
         flotante.querySelector("img").src = imagenSrc;
         flotante.style.display = "block";
+
+        // Ocultar la imagen flotante después de 3 segundos
+        setTimeout(() => {
+          flotante.style.display = "none";
+        }, 3000); // 3 segundos
       });
     });
 
