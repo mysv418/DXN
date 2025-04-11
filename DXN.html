@@ -2,33 +2,44 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>DXN</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding-bottom: 80px; /* espacio para los resultados fijos */
+      font-family: sans-serif;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
       border: 2px solid black;
     }
+
     th, td {
       border: 2px solid black;
       padding: 8px;
       text-align: left;
     }
+
     th {
       background-color: #00a608;
       color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
+
     img {
       width: 50px;
       height: auto;
     }
-    tfoot td {
-      font-weight: bold;
-      text-align: center;
-    }
 
-    /* Imagen flotante centrada arriba */
     #imagen-flotante {
       position: fixed;
       top: 400px;
@@ -46,9 +57,44 @@
       width: 200px;
       height: auto;
     }
+
+    /* Resultados fijos abajo */
+    #resultados-fijos {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      border-top: 2px solid black;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      font-weight: bold;
+      text-align: center;
+      padding: 5px 0;
+      z-index: 100;
+    }
+
+    #resultados-fijos > div {
+      border-right: 2px solid black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    #resultados-fijos > div:last-child {
+      border-right: none;
+    }
+
+    #resultados-fijos .titulo {
+      font-size: 12px;
+      color: #444;
+      margin-bottom: 3px;
+    }
   </style>
 </head>
 <body>
+
   <table id="tabla">
     <thead>
       <tr>
@@ -63,531 +109,35 @@
     </thead>
     <tbody>
       <tr>
-                <td ="true"><img src="https://i.postimg.cc/gJBhnQBJ/Screenshot-20250404-160558.jpg" alt="Producto"></td>
-                <td ="true">NON DAIRY CREAMER</td>
-                <td ="true" class="precio">54</td>
-                <td ="true" class="pv">1.5</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
-            <tr>
-                <td ="true"><img src="https://i.postimg.cc/MZgxzwmL/Screenshot-20250404-163206.jpg" alt="Producto"></td>
-                <td ="true">APPLE FERMENTED</td>
-                <td ="true" class="precio">170</td>
-                <td ="true" class="pv">4.5</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-
-      <tr>
-                <td ="true"><img src="https://i.postimg.cc/RZ9k0Z6g/Screenshot-20250404-163923.jpg" alt="Producto"></td>
-                <td ="true">LIONS MANE MATCHA</td>
-                <td ="true" class="precio">194</td>
-                <td ="true" class="pv">5.5</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
-      <tr>
-                <td ="true"><img src="https://i.postimg.cc/qRLt9R3W/Screenshot-20250404-170551.jpg" alt="Producto"></td>
-                <td ="true">COFFE MIX 2en1</td>
-                <td ="true" class="precio">273</td>
-                <td ="true" class="pv">5.6</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
-      <tr>
-                <td ="true"><img src="https://i.postimg.cc/Gh9B5bhS/Screenshot-20250404-171016.jpg" alt="Producto"></td>
-                <td ="true">VITACAFE MIX</td>
-                <td ="true" class="precio">264</td>
-                <td ="true" class="pv">7.4</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
-  <tr>
-                <td ="true"><img src="https://i.postimg.cc/C5RFmLHG/Screenshot-20250404-171948.jpg" alt="Producto"></td>
-                <td ="true">NUTRIZHI</td>
-                <td ="true" class="precio">364</td>
-                <td ="true" class="pv">9.5</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
-  <tr>
-                <td ="true"><img src="https://i.postimg.cc/MpzqcDf2/Screenshot-20250404-194857.jpg" alt="Producto"></td>
-                <td ="true">ZHI ROASTED</td>
-                <td ="true" class="precio">110</td>
-                <td ="true" class="pv">5.4</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
-  <tr>
-                <td ="true"><img src="https://i.postimg.cc/VNV8VPGm/Screenshot-20250404-195347.jpg" alt="Producto"></td>
-                <td ="true">ZHI HONEY</td>
-                <td ="true" class="precio">404</td>
-                <td ="true" class="pv">11.8</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
-  <tr>
-                <td ="true"><img src="https://i.postimg.cc/FRL2CdkV/Screenshot-20250404-195730.jpg" alt="Producto"></td>
-                <td ="true">MULTIPURPOSE SEASONING</td>
-                <td ="true" class="precio">192</td>
-                <td ="true" class="pv">8.3</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
-  <tr>
-                <td ="true"><img src="https://i.postimg.cc/bN8KLvy1/Screenshot-20250404-200040.jpg" alt="Producto"></td>
-                <td ="true">SUGAR</td>
-                <td ="true" class="precio">25</td>
-                <td ="true" class="pv">0.6</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
-  <tr>
-                <td ="true"><img src="https://i.postimg.cc/25PtWk9b/61-D7siz-Z6u-L-AC-UF894-1000-QL80.jpg" alt="Producto"></td>
-                <td ="true">LEMONZHI</td>
-                <td ="true" class="precio">165</td>
-                <td ="true" class="pv">4.7</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
-  <tr>
-                <td ="true"><img src="https://i.postimg.cc/XqWD22bn/GANODERMA-3-EN-1-BOLSA-COMPLETA.png" alt="Producto"></td>
-                <td ="true">3 EN 1</td>
-                <td ="true" class="precio">216</td>
-                <td ="true" class="pv">4.6</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
-  <tr>
-                <td ="true"><img src="https://i.postimg.cc/y8xprgw3/Screenshot-20250404-200854.jpg" alt="Producto"></td>
-                <td ="true">CORDYCEPS MIX</td>
-                <td ="true" class="precio">224</td>
-                <td ="true" class="pv">5.9</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
-  <tr>
-                <td ="true"><img src="https://i.postimg.cc/cCdX7rRH/61b-Q3a-Z8-OIL-AC-UF894-1000-QL80.jpg" alt="Producto"></td>
-                <td ="true">EU CAFE MIX</td>
-                <td ="true" class="precio">232</td>
-                <td ="true" class="pv">6.3</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
-  <tr>
-                <td ="true"><img src="https://i.postimg.cc/fTT8JSW-q/51-T8-Kx-BVhc-L.jpg" alt="Producto"></td>
-                <td ="true">OOCHA</td>
-                <td ="true" class="precio">234</td>
-                <td ="true" class="pv">7</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
-  <tr>
-                <td ="true"><img src="https://i.postimg.cc/66z0J6Vr/Screenshot-20250404-202102.jpg" alt="Producto"></td>
-                <td ="true">M. DE LEON COFFE LATTE</td>
-                <td ="true" class="precio">227</td>
-                <td ="true" class="pv">8.3</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
-  <tr>
-                <td ="true"><img src="https://i.postimg.cc/cH0Q2Prk/Screenshot-20250404-202548.jpg" alt="Producto"></td>
-                <td ="true">VINAIGRETTE HONEY</td>
-                <td ="true" class="precio">367</td>
-                <td ="true" class="pv">7.7</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
-  <tr>
-                <td ="true"><img src="https://i.postimg.cc/k5cV6Ggw/images-removebg-preview.png" alt="Producto"></td>
-                <td ="true">LIONS MANE COFFE CUP</td>
-                <td ="true" class="precio">19</td>
-                <td ="true" class="pv">0.7</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
-  <tr>
-                <td ="true"><img src="https://i.postimg.cc/43Nc1VMj/Screenshot-20250404-205106.jpg" alt="Producto"></td>
-                <td ="true">OOZHI TEA</td>
-                <td ="true" class="precio">98</td>
-                <td ="true" class="pv">2.9</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
-  <tr>
-                <td ="true"><img src="https://i.postimg.cc/d017CvZY/FB215-Lions-Mane-Coffee-Box-e1611880761812.jpg" alt="Producto"></td>
-                <td ="true">MELENA DE LEON</td>
-                <td contenteditable="true" class="precio">227</td>
-                <td ="true" class="pv">8.3</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://i.postimg.cc/t4gRSkqd/61-N-hyv-Vg-YL-SL1296.jpg" alt="Producto"></td>
-                <td ="true">3 EN 1 LITE</td>
-                <td ="true" class="precio">216</td>
-                <td ="true" class="pv">4.6</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://i.postimg.cc/rp0VcptK/Mezcla-Ootea-Zhi-Mocha.jpg" alt="Producto"></td>
-                <td ="true">ZHIMOCHA MIX</td>
-                <td ="true" class="precio">260</td>
-                <td ="true" class="pv">7.1</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
- <tr>
-                <td ="true"><img src="https://i.postimg.cc/15vsqFG8/Producto2-0001-spirulina-cereal-dxn-D-NQ-NP-610172-MPE28082654907-092018-F.jpg" alt="Producto"></td>
-                <td ="true">SPIRULINA</td>
-                <td contenteditable="true" class="precio">481</td>
-                <td ="true" class="pv">15.6</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://i.postimg.cc/prqbKNnw/image.jpg" alt="Producto"></td>
-                <td ="true">LIONS MANE OOCHA</td>
-                <td ="true" class="precio">265</td>
-                <td ="true" class="pv">8.3</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://i.postimg.cc/pTHg7VQN/Screenshot-20250404-212000.jpg" alt="Producto"></td>
-                <td ="true">M. DE LEON OOCHA MATTE</td>
-                <td ="true" class="precio">268</td>
-                <td ="true" class="pv">8.1</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://i.postimg.cc/0y5GVTKt/61yje5-J4p-L.jpg" alt="Producto"></td>
-                <td ="true">WHITE COFFEE ZHINO MIX</td>
-                <td ="true" class="precio">273</td>
-                <td ="true" class="pv">7.4</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://i.postimg.cc/hjKKm157/Apple-dxn.png" alt="Producto"></td>
-                <td ="true">APPLE SPARKLING DRINK</td>
-                <td ="true" class="precio">30</td>
-                <td ="true" class="pv">1</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://i.postimg.cc/Fz75bWg1/D-Q-NP-2-X-772565-MPE51081343480-082022-T.webp" alt="Producto"></td>
-                <td ="true">2 EN 1</td>
-                <td ="true" class="precio">221</td>
-                <td ="true" class="pv">4.6</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://i.postimg.cc/rs36f1Qj/61-KFKo-Ap-Hs-L-AC-UF894-1000-QL80.jpg" alt="Producto"></td>
-                <td ="true">3 EN 1 LITE MIX</td>
-                <td ="true" class="precio">217</td>
-                <td ="true" class="pv">5.9</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
-
-            
- <tr>
-                <td ="true"><img src="https://i.postimg.cc/0ygRmC62/Producto-0001-zhi-mocha.jpg" alt="Producto"></td>
-                <td ="true">ZHIMOCHA</td>
-                <td ="true" class="precio">260</td>
-                <td ="true" class="pv">6.5</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://dxncafesaludable.pe/wp-content/uploads/2022/06/Te-Latte.jpg" alt="Producto"></td>
-                <td ="true">TEA LATTE</td>
-                <td ="true" class="precio">262</td>
-                <td ="true" class="pv">7</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://negociodxn.com/wp-content/uploads/2023/03/FB362_Oolong_Tea_Powder30g.jpg" alt="Producto"></td>
-                <td ="true">OOLONG TEA POWDER</td>
-                <td ="true" class="precio">141</td>
-                <td ="true" class="pv">4.1</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://dxnperu.pe/wp-content/uploads/2024/08/asset-32.jpeg" alt="Producto"></td>
-                <td ="true">ACEITE VCOL</td>
-                <td ="true" class="precio">450</td>
-                <td ="true" class="pv">13</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://i.postimg.cc/pd2SYcPx/Screenshot-20250404-215708.jpg" alt="Producto"></td>
-                <td ="true">LIONS MANE COFFEE DRINK</td>
-                <td contenteditable="true" class="precio">35</td>
-                <td ="true" class="pv">1.2</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://dxneltambo.com/imagenes_productos/Lions%20Mane%20Coconut%20Latte%20Drink.png" alt="Producto"></td>
-                <td ="true">LIONS MANE COCONUT LATTE DRINK</td>
-                <td ="true" class="precio">43</td>
-                <td ="true" class="pv">1.4</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://i.ebayimg.com/images/g/EEUAAOSw5cli5N3q/s-l1200.jpg" alt="Producto"></td>
-                <td ="true">CORDYCEPS </td>
-                <td ="true" class="precio">224</td>
-                <td ="true" class="pv">5</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://dxncafesaludable.pe/wp-content/uploads/2023/11/Mezcla-de-Cafe-Negro-Ootea-Lingzhi.jpg" alt="Producto"></td>
-                <td ="true">BLACK COFFE MIX</td>
-                <td ="true" class="precio">221</td>
-                <td ="true" class="pv">5.9</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://i.ebayimg.com/images/g/idsAAOSwpE5bqGmO/s-l1600.jpg" alt="Producto"></td>
-                <td ="true">VITA CAFE</td>
-                <td contenteditable="true" class="precio">264</td>
-                <td ="true" class="pv">6.2</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://dxntop.it/cdn/shop/files/dxn-zhi-mint-plus-caramelle-menta-e-ganoderma-540444.png?v=1737510661&width=600" alt="Producto"></td>
-                <td ="true">ZHI MINT PLUS</td>
-                <td ="true" class="precio">444</td>
-                <td ="true" class="pv">12</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://dxncafesaludable.pe/wp-content/uploads/2023/11/Te-Zhitea.jpg" alt="Producto"></td>
-                <td ="true">ZHITEA</td>
-                <td ="true" class="precio">224</td>
-                <td ="true" class="pv">5.5</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://dxncyprus.com/wp-content/uploads/2020/10/HF038_Spirulina_500s.jpg" alt="Producto"></td>
-                <td ="true">SPIRULINA TABLET 500s</td>
-                <td ="true" class="precio">922</td>
-                <td ="true" class="pv">18.7</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://i.postimg.cc/fyhNQb5c/Screenshot-20250405-080148-removebg-preview.png" alt="Producto"></td>
-                <td ="true">LIONS MANE BLACK COFFEE DRINK</td>
-                <td ="true" class="precio">32</td>
-                <td ="true" class="pv">1.1</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://i.postimg.cc/XvRM9vRR/Screenshot-20250405-080525.jpg" alt="Producto"></td>
-                <td ="true">SPIRULINA CROSTINI</td>
-                <td ="true" class="precio">84</td>
-                <td ="true" class="pv">2.2</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://dxncafesaludable.pe/wp-content/uploads/2023/11/Mezcla-de-Cafe-3-en-1-Ootea-Lingzhi.jpg" alt="Producto"></td>
-                <td ="true">3 EN 1 MIX</td>
-                <td ="true" class="precio">217</td>
-                <td ="true" class="pv">5.9</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://www.ubuy.com.bo/productimg/?image=aHR0cHM6Ly9tLm1lZGlhLWFtYXpvbi5jb20vaW1hZ2VzL0kvNjFnUFZMbmF1MEwuX1NTNDAwXy5qcGc.jpg" alt="Producto"></td>
-                <td ="true">COCOZHI</td>
-                <td ="true" class="precio">257</td>
-                <td ="true" class="pv">6</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://i.postimg.cc/1XRvFhzx/Screenshot-20250405-081146.jpg" alt="Producto"></td>
-                <td ="true">SPIRULINA COFFE</td>
-                <td ="true" class="precio">227</td>
-                <td ="true" class="pv">8.3</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://i.postimg.cc/ncjvPcgR/Screenshot-20250405-081416.jpg" alt="Producto"></td>
-                <td ="true">FIDEOS DXN</td>
-                <td contenteditable="true" class="precio">80</td>
-                <td ="true" class="pv">2.1</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://www.dxn2u.com/product/images/FFB/TE/FB307_DXN_Florathemum.jpg" alt="Producto"></td>
-                <td ="true">FLORATHEMUN</td>
-                <td ="true" class="precio">260</td>
-                <td ="true" class="pv">7.9</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://m.media-amazon.com/images/I/51xRw4HCSPL._AC_UF894,1000_QL80_.jpg" alt="Producto"></td>
-                <td ="true">VINAGRE DE RAMBUTAM</td>
-                <td ="true" class="precio">247</td>
-                <td ="true" class="pv">5.8</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3tX_vJuCwNf1mD66NHUMv6bYQuuMS-152F4_3HqwsEN1CTzEW7jv8aHkjAdff4QS8iiTswVRNr8AkmiNea3cAfddJMTj0hxnIIgqz2QdTMFfEkmVDD685LcefEt-IIRndevXPW0Nu_ehnTi4tpuO530k1xEtuI9XdPshzVDQg9TJlX70ZGiUDF28S-34O/s947/cherry%20chinese%20dxn.png" alt="Producto"></td>
-                <td ="true">CHINESSE CHERRY SPARKLING DRINK</td>
-                <td ="true" class="precio">32</td>
-                <td ="true" class="pv">1.1</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-            
- <tr>
-                <td ="true"><img src="https://i.postimg.cc/fT8YySXR/Screenshot-20250405-085244.jpg" alt="Producto"></td>
-                <td ="true">ZHI CROSTINI</td>
-                <td ="true" class="precio">84</td>
-                <td ="true" class="pv">2.2</td>
-                <td contenteditable="true" class="unidad">0</td>
-                <td class="total_pv">0</td>
-                <td class="total">0</td>
-            </tr>
-      
- <!-- Más filas aquí -->
-    </tbody>
-    <tfoot>
-      <tr>
-       <td colspan="4" style="text-align:right;">RESULTADOS:</td>
-        <td id="total_cantidad">0</td>
-        <td id="total_pv">0</td>
-        <td id="total">0</td>
+        <td><img src="https://i.postimg.cc/gJBhnQBJ/Screenshot-20250404-160558.jpg" alt="Producto"></td>
+        <td>NON DAIRY CREAMER</td>
+        <td class="precio">54</td>
+        <td class="pv">1.5</td>
+        <td contenteditable="true" class="unidad">0</td>
+        <td class="total_pv">0</td>
+        <td class="total">0</td>
       </tr>
-    </tfoot>
-<iframe src="https://dxn53.wordpress.com/" style="width: 10vw; height: 2vh; border: none;"></iframe>
-    
+    </tbody>
   </table>
 
-  <!-- Imagen flotante centrada -->
+  <!-- Resultados fijos abajo -->
+  <div id="resultados-fijos">
+    <div class="label">RESULTADOS:</div>
+    <div>
+      <div class="titulo">CANTIDAD</div>
+      <div id="total_cantidad">0</div>
+    </div>
+    <div>
+      <div class="titulo">PV</div>
+      <div id="total_pv">0</div>
+    </div>
+    <div>
+      <div class="titulo">TOTAL</div>
+      <div id="total">0</div>
+    </div>
+  </div>
+
+  <!-- Imagen flotante -->
   <div id="imagen-flotante"><img src="" alt="Producto S"></div>
 
   <script>
@@ -629,33 +179,14 @@
         flotante.querySelector("img").src = imagenSrc;
         flotante.style.display = "block";
 
-        // Ocultar la imagen flotante después de 3 segundos
         setTimeout(() => {
           flotante.style.display = "none";
-        }, 5000); // 3 segundos
+        }, 5000);
       });
     });
 
     calcularTotal();
-
-// Verificamos si el usuario está autenticado
-    const validUsers = { "Gonzalo": "10101", "usuario1": "10201", "usuario2": "60281", "usuario3": "00001", "usuario4": "88881", "usuario5": "55551", "usuario6": "80901", "usuario7": "11111", "usuario8": "99991", "usuario9": "20201" };
-    
-        const currentVersion = "1.0"; // Asegúrate de que coincida con index.html
-
-        const savedUser = (localStorage.getItem("username") || "").trim();
-        const savedPass = (localStorage.getItem("password") || "").trim();
-        const savedVersion = localStorage.getItem("sessionVersion");
-        const isAuthenticated = localStorage.getItem("isAuthenticated");
-
-        // Si la versión de sesión ha cambiado o los datos no coinciden, cerrar sesión automáticamente
-        if (!savedUser || !isAuthenticated || savedVersion !== currentVersion || !validUsers[savedUser] || validUsers[savedUser] !== savedPass) {
-            localStorage.clear(); // Borra la sesión automáticamente
-            window.location.href = "iniciar_sesion.html"; // Redirige al login
-        } else {
-            document.getElementById("user-name").innerText = savedUser;
-        }
-
   </script>
+
 </body>
 </html>
