@@ -690,6 +690,27 @@
     });
 
     calcularTotal();
+
+
+
+    // Verificamos si el usuario está autenticado
+    const validUsers = { "Gonzalo": "10101", "usuario1": "10201", "usuario2": "60281", "usuario3": "00001", "usuario4": "88881", "usuario5": "55551", "usuario6": "80901", "usuario7": "11111", "usuario8": "99991", "usuario9": "20201" };
+    
+        const currentVersion = "1.0"; // Asegúrate de que coincida con index.html
+
+        const savedUser = (localStorage.getItem("username") || "").trim();
+        const savedPass = (localStorage.getItem("password") || "").trim();
+        const savedVersion = localStorage.getItem("sessionVersion");
+        const isAuthenticated = localStorage.getItem("isAuthenticated");
+
+        // Si la versión de sesión ha cambiado o los datos no coinciden, cerrar sesión automáticamente
+        if (!savedUser || !isAuthenticated || savedVersion !== currentVersion || !validUsers[savedUser] || validUsers[savedUser] !== savedPass) {
+            localStorage.clear(); // Borra la sesión automáticamente
+            window.location.href = "iniciar_sesion.html"; // Redirige al login
+        } else {
+            document.getElementById("user-name").innerText = savedUser;
+        }
+
   </script>
 
 </body>
